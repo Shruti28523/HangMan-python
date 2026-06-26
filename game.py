@@ -118,33 +118,40 @@ def start_game():
 
     while "_" in display and lives > 0:
 
-      console.clear()
+     console.clear()
 
-      console.print(f"[bold cyan]Category:[/bold cyan] {category}")
+     console.rule("[bold cyan]🎮 HANGMAN[/bold cyan]")
+     console.print(f"[bold yellow]📂 Category:[/bold yellow] {category.title()}")
+     console.print(hangman[6 - lives])
+     console.print(f"[bold green]Word:[/bold green] {' '.join(display)}")
 
-      console.print(f"\nWord: {' '.join(display)}")
-      console.print(hangman[6 - lives])
-      console.print(f"\n❤️ Lives: {lives}")
-      console.print(f"\n📝 Guessed Letters: {' '.join(guessed_letters)}")
-      console.print(f"❌ Wrong Letters: {' '.join(wrong_letters)}")
-     
-      guess = input("\nGuess a letter: ").lower().strip()
-      if len(guess) != 1 or not guess.isalpha():
+     console.print(f"[bold red]❤️ Lives:[/bold red] {lives}")
+
+     console.print(f"[bold magenta]❌ Wrong:[/bold magenta] {' '.join(wrong_letters)}")
+
+     console.print(f"[bold blue]📝 Guessed:[/bold blue] {' '.join(guessed_letters)}")
+
+     console.rule() 
+    
+
+     guess = input("\nGuess a letter: ").lower().strip()
+
+     if len(guess) != 1 or not guess.isalpha():
          console.print("\n[red]Please enter ONE letter only![/red]")
          input("\nPress Enter...")
          continue
-      if guess in guessed_letters:
-          console.print("\n[yellow]You already guessed that letter![/yellow]")
-          input("\nPress Enter...")
-          continue
+     if guess in guessed_letters:
+         console.print("\n[yellow]You already guessed that letter![/yellow]")
+         input("\nPress Enter...")
+         continue
 
-      guessed_letters.append(guess)
+     guessed_letters.append(guess)
 
-      if guess in secret_word:
+     if guess in secret_word:
         for i in range(len(secret_word)):
           if secret_word[i] == guess:
             display[i] = guess
-      else:
+     else:
         lives -= 1
         wrong_letters.append(guess)
     
