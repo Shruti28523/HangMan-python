@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Hangman Remastered</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+   <div class="background"></div>
+
+   <div class="overlay">
+
+    <!-- Main Menu -->
+
+    <div class="menu" id="main-menu">
+
+        <h1>Hangman Remastered</h1>
+
+        <p>A Cozy Word Adventure</p>
+
+        <button id="play-btn">▶ Play Game</button>
+
+        <button>📖 How to Play</button>
+
+        <button>⚙ Settings</button>
+
+    </div>
+
+    <!-- Category Menu -->
+
+    <div class="menu hidden" id="category-menu">
+
+        <h1>Choose Category</h1>
+
+        <button>🐻 Animals</button>
+
+        <button>🌍 Countries</button>
+
+        <button>🍔 Food</button>
+
+        <button>🎬 Movies</button>
+
+        <button>💻 Programming</button>
+
+        <button>🎲 Random</button>
+
+        <button id="back-btn">⬅ Back</button>
+
+    </div>
+
+</div>
+
+<script src="{{ url_for('static', filename='js/game.js') }}"></script>
+
+</body>
+
+</html>
