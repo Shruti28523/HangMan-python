@@ -4,7 +4,6 @@
 <head>
 
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Hangman Remastered</title>
@@ -16,73 +15,115 @@
 
 <body>
 
-   <div class="background"></div>
+    <div class="background"></div>
 
-   <div class="overlay">
+    <div class="overlay">
 
-    <!-- Main Menu -->
+        <!-- ================= MAIN MENU ================= -->
 
-    <div class="menu" id="main-menu">
+        <div class="menu" id="main-menu">
 
-        <h1>Hangman Remastered</h1>
+            <h1>Hangman Remastered</h1>
 
-        <p>A Cozy Word Adventure</p>
+            <p>A Cozy Word Adventure</p>
 
-        <button id="play-btn">▶ Play Game</button>
+            <button id="play-btn">▶ Play Game</button>
 
-        <button>📖 How to Play</button>
+            <button>📖 How to Play</button>
 
-        <button>⚙ Settings</button>
+            <button>⚙ Settings</button>
+
+        </div>
+
+        <!-- ================= CATEGORY MENU ================= -->
+
+        <div class="menu hidden" id="category-menu">
+
+            <h1>Select Category</h1>
+
+            <div class="category-grid">
+
+                <div class="category-card" data-category="Animals">
+                    🐻 Animals
+                </div>
+
+                <div class="category-card" data-category="Countries">
+                    🌍 Countries
+                </div>
+
+                <div class="category-card" data-category="Food">
+                    🍕 Food
+                </div>
+
+                <div class="category-card" data-category="Movies">
+                    🎬 Movies
+                </div>
+
+                <div class="category-card" data-category="Programming">
+                    💻 Programming
+                </div>
+
+                <div class="category-card" data-category="Random">
+                    🎲 Random
+                </div>
+
+            </div>
+
+            <button id="back-btn">
+                ⬅ Back
+            </button>
+
+        </div>
+
+        <!-- ================= GAME SCREEN ================= -->
+
+        <div class="menu hidden" id="game-screen">
+
+            <h1 id="game-title">Animals</h1>
+
+            <div id="hangman-image">
+
+                <div id="hangman-img">
+                    🪢
+                </div>
+
+            </div>
+
+            <div id="word">
+
+                _ _ _ _ _
+
+            </div>
+
+            <div id="lives">
+
+                ❤️ ❤️ ❤️ ❤️ ❤️ ❤️
+
+            </div>
+
+            <div id="guess-info">
+
+                ⌨️ Press any letter on your keyboard
+
+            </div>
+
+            <div id="wrong-letters">
+
+                Wrong Letters:
+
+            </div>
+
+            <button id="exit-btn">
+
+                ⬅ Exit
+
+            </button>
+
+        </div>
 
     </div>
 
-    <!-- Category Menu -->
-
-    <div class="menu hidden" id="category-menu">
-
-        <h1>Choose Category</h1>
-
-        <div class="category-grid">
-
-    <div class="category-card">
-        🐻
-        <span>Animals</span>
-    </div>
-
-    <div class="category-card">
-        🌍
-        <span>Countries</span>
-    </div>
-
-    <div class="category-card">
-        🍔
-        <span>Food</span>
-    </div>
-
-    <div class="category-card">
-        🎬
-        <span>Movies</span>
-    </div>
-
-    <div class="category-card">
-        💻
-        <span>Programming</span>
-    </div>
-
-    <div class="category-card">
-        🎲
-        <span>Random</span>
-    </div>
-
-</div>
-
-        <button id="back-btn">⬅ Back</button>
-
-    </div>
-
-</div>
-
-<script src="{{ url_for('static', filename='js/game.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/game.js') }}"></script>
 
 </body>
 

@@ -1,6 +1,7 @@
-from flask import Flask, render_template
-import threading
+from flask import Flask, render_template, jsonify
+from game.words import load_words
 import webbrowser
+from threading import Timer
 
 app = Flask(__name__)
 
@@ -10,10 +11,20 @@ def home():
     return render_template("index.html")
 
 
+@app.route("/get-word/<category>")
+def get_word(category):
+
+    word = load_words(category)
+
+    return jsonify({
+        "word": word
+    })
+
+
 def open_browser():
-    webbrowser.open("http://127.0.0.1:5000")
+    webbrowser.open_new("http://127.0.0.1:5000/")
 
 
 if __name__ == "__main__":
-    threading.Timer(1, open_browser).start()
-    app.run(debug=True, use_reloader=False)
+    Timer(1, open_browser).start()
+    app.run(debug=True)

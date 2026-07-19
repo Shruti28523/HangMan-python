@@ -8,4 +8,4 @@ def load_words(category):
     with open(filename, "r") as file:
         words = file.read().splitlines()
 
-    return random.choice(words)
+    return random.choice(words).upper()
