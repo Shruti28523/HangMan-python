@@ -17,7 +17,6 @@ let guessedLetters = [];
 let wrongLetters = [];
 let lives = 6;
 
-
 function displayWord() {
 
     let display = "";
@@ -25,14 +24,14 @@ function displayWord() {
     for (let letter of selectedWord) {
 
         if (guessedLetters.includes(letter)) {
-            display += letter + " ";
+            display += `<span>${letter}</span>`;
         } else {
-            display += "_ ";
+            display += `<span>_</span>`;
         }
 
     }
 
-    wordDiv.textContent = display;
+    wordDiv.innerHTML = display;
 
 }
 
@@ -60,6 +59,53 @@ function updateWrongLetters() {
 
 }
 
+
+function celebrateWin() {
+
+    const duration = 3000;
+    const animationEnd = Date.now() + duration;
+
+    const defaults = {
+        startVelocity: 30,
+        spread: 360,
+        ticks: 80,
+        zIndex: 1000
+    };
+
+    const interval = setInterval(() => {
+
+        const timeLeft = animationEnd - Date.now();
+
+        if (timeLeft <= 0) {
+            clearInterval(interval);
+            return;
+        }
+
+        const particleCount = 50 * (timeLeft / duration);
+
+        // Left side
+        confetti({
+            ...defaults,
+            particleCount,
+            origin: {
+                x: 0,
+                y: Math.random() * 0.5 + 0.2
+            }
+        });
+
+        // Right side
+        confetti({
+            ...defaults,
+            particleCount,
+            origin: {
+                x: 1,
+                y: Math.random() * 0.5 + 0.2
+            }
+        });
+
+    }, 250);
+
+}
 
 document.addEventListener("keydown", function (event) {
 
@@ -91,7 +137,7 @@ document.addEventListener("keydown", function (event) {
 
             setTimeout(() => {
 
-                alert("🎉 You Win!");
+               celebrateWin();
 
             }, 100);
 
